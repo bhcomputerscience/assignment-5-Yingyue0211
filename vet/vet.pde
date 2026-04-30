@@ -13,7 +13,7 @@ PImage backgroundPic;
 
 //Objects
 Cat c1; //cat
-ArrayList<Bottle> bottles = new ArrayList<Bottle>(); //3 type of medicines
+ArrayList<Bottle> bottles = new ArrayList<Bottle>(); // Stores all medicine bottles
 NextButton nextBtn;//next level button
 
 int numill; //Current disease number
@@ -54,6 +54,7 @@ void setup()
   numill = int(random(1,5));
   //creat objects
   c1 = new Cat(cat1, width/2.7, height/5.5, numill);//cat
+   // Add medicine bottles to list
   bottles.add(new Bottle(cold, coldmX, coldmY));
   bottles.add(new Bottle(dewarm, wormmX, wormmY));
   bottles.add(new Bottle(anti, antimX, antimY));
@@ -72,9 +73,9 @@ void draw()
   if(c1.health >= 100)//If fully healed
   {
     result = "Fully healed!";
-    nextBtn.visible = true;
+    nextBtn.visible = true;// Allow player to continue
   }
-  for(int i = 0; i < bottles.size(); i++)
+  for(int i = 0; i < bottles.size(); i++)// Draw all medicine bottles
   {
     bottles.get(i).display();
   }
@@ -105,18 +106,19 @@ void nextCase()
 void mousePressed()
 {
   // Click next button
-  if(nextBtn.visible && nextBtn.isClicked())
+  if(nextBtn.visible && nextBtn.isClicked())//go to next case
   {
     nextCase();
     nextBtn.visible = false;
   }
-  // Check if clicking on each bottle
-  
+
+  // Check if player clicked any medicine bottle
   for(int i = 0; i < bottles.size(); i++)
   {
     Bottle b = bottles.get(i);
     if(b.isClicked())
     {
+      //bottle index (1-based) 
       b.click(i + 1); 
     }
   }

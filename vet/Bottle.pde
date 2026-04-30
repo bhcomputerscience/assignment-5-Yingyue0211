@@ -15,7 +15,7 @@ class Bottle
   {
     image(bottle, x, y);
   }
-  
+  // Checks if the mouse is inside the bottle's area
   public boolean isClicked()
   {
     return mouseX >= x && mouseX <= x + bottle.width && mouseY >= y && mouseY <= y + bottle.height;
